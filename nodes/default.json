@@ -1,0 +1,22 @@
+{
+  "hyone_plenv": {
+    "user":  "vagrant",
+    "group": "vagrant",
+    "home": "/home/vagrant",
+    "default":  "5.18.1",
+    "versions": [
+      {
+        "version": "5.18.1"
+      },
+      {
+        "version":        "5.16.2",
+        "configure_opts": "-Dusethreads"
+      }
+    ],
+    "setup_bash": true
+  },
+
+  "run_list": [
+    "recipe[hyone_plenv::default]"
+  ]
+}

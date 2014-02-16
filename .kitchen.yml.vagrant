@@ -1,0 +1,38 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_solo
+
+platforms:
+  - name: ubuntu-12.04
+  - name: centos-6.4
+
+suites:
+  - name: default
+    run_list:
+      - recipe[hyone_plenv-test]
+    attributes:
+      hyone_plenv:
+        user:  hoge
+        group: hoge
+        home: /home/hoge
+        default:  5.18.1
+        versions:
+          - version: 5.18.1
+        setup_bash: true
+
+  - name: system
+    run_list:
+      - recipe[hyone_plenv-test]
+    attributes:
+      hyone_plenv:
+        user:  root
+        group: root
+        path: /usr/local/plenv
+        default:  5.16.2
+        versions:
+          - version: 5.16.2
+            configure_opts: -Dusethreads
+        setup_bash: true
