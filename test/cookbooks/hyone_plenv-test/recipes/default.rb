@@ -5,6 +5,12 @@ _group      = get_user(node)
 _home       = get_home(node, _user)
 _plenv_root = get_plenv_root(node, _user)
 
+
+case
+when platform?('ubuntu')
+  include_recipe 'apt'
+end
+
 ## user and group
 user _user do
   home _home
