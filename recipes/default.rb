@@ -26,6 +26,8 @@ include_recipe 'git'
 %w{
   patch
   curl
+  tar
+  bzip2
 }.each do |name|
   package name do
     action [:install]
