@@ -6,10 +6,11 @@ _versions = %w{
   5.16.2
 }
 
+set :path, "#{::File.join(_plenv_root, 'bin')}:#{::File.join(_plenv_root, 'shims')}:$PATH"
+
 # plenv installed
 describe command('plenv') do
-  let(:path) { ::File.join _plenv_root, 'bin' }
-  it { should return_exit_status 0 }
+  its(:exit_status) { should eq 0 }
 end
 
 # each perl version installed
@@ -18,7 +19,7 @@ _versions.each do |version|
   keyword      = version.gsub('-', '')
 
   describe command(perl_command + ' --version') do
-    it { should return_stdout /#{ Regexp.escape keyword }/ }
+    its(:stdout) { should =~ /#{ Regexp.escape keyword }/ }
   end
 end
 
@@ -26,8 +27,7 @@ end
 keyword = 'v5.16.2'
 
 describe command('perl --version') do
-  let(:path) { ::File.join _plenv_root, 'shims' }
-  it { should return_stdout /#{ Regexp.escape keyword }/ }
+  its(:stdout) { should =~ /#{ Regexp.escape keyword }/ }
 end
 
 
