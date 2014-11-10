@@ -3,7 +3,7 @@ require 'spec_helper'
 _user = 'hoge'
 _plenv_root = ::File.join('/home', _user, '.plenv')
 _versions = %w{
-  5.18.1
+  5.20.1
 }
 
 set :path, "#{::File.join(_plenv_root, 'bin')}:#{::File.join(_plenv_root, 'shims')}:$PATH"

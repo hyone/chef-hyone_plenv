@@ -24,9 +24,9 @@ suites:
         user:  hoge
         group: hoge
         home: /home/hoge
-        default:  5.18.1
+        default:  5.20.1
         versions:
-          - version: 5.18.1
+          - version: 5.20.1
         setup_bash: true
 
   - name: system
