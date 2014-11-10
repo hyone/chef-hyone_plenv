@@ -39,13 +39,6 @@ when platform?('ubuntu')
   end
 end
 
-execute 'sudo without password' do
-  command <<-EOC
-    echo "#{_user} ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/#{_user}
-    chmod 0440 /etc/sudoers.d/#{_user}
-  EOC
-end
-
 ## fix '/dev/fd/62: No such file or directory' trouble on docker
 execute 'fix docker problem' do
   command <<-EOC
